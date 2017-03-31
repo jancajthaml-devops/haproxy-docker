@@ -8,8 +8,8 @@ ENV GODNSMASQ_VERSION 1.0.7
 ENV HAPROXY_MAJOR 1.6
 ENV HAPROXY_VERSION 1.6.3
 
-RUN addgroup -S haproxy && \
-    adduser -S -G haproxy haproxy
+RUN addgroup -S balancer && \
+    adduser -S -G balancer balancer
 
 RUN apk add --update libcap
 

@@ -1,5 +1,3 @@
 #!/usr/bin/with-contenv sh
 
-# fixme check if empty
-
-exec s6-setuidgid haproxy -f /etc/haproxy/haproxy.conf;
+exec s6-setuidgid balancer haproxy -f /etc/haproxy/haproxy.conf;
