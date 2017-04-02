@@ -23,9 +23,6 @@ run: image
 	docker run $(NAME):$(VERSION) /bin/true
 
 tag: image tag_git
-	docker export $$(docker ps -q -n=1) | docker import - $(NAME):stripped
-	docker tag $(NAME):stripped $(NAME):$(VERSION)
-	docker rmi $(NAME):stripped
 
 publish: tag
 	docker push $(NAME)
