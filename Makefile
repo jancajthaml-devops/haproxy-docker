@@ -11,12 +11,13 @@ image:
 
 tag_git:
 	git checkout -B release/$(VERSION)
-	git branch --set-upstream-to=origin/release/$(VERSION) release/$(VERSION)
-	git pull --tags
 	git add --all
-	git commit -a --allow-empty-message -m ''
+	git commit -a --allow-empty-message -m '' 2> /dev/null || true
 	git rebase --no-ff --autosquash release/$(VERSION)
+	git pull origin release/$(VERSION)
 	git push origin release/$(VERSION)
+	git checkout master
+
 
 run: image
 	docker run $(NAME):$(VERSION) /bin/true
