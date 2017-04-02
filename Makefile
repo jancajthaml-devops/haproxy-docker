@@ -14,7 +14,7 @@ tag_git:
 	git add --all
 	git commit -a --allow-empty-message -m '' 2> /dev/null || true
 	git rebase --no-ff --autosquash release/$(VERSION)
-	git pull origin release/$(VERSION)
+	git pull origin release/$(VERSION) 2> /dev/null || true
 	git push origin release/$(VERSION)
 	git checkout master
 
