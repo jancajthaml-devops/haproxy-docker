@@ -18,7 +18,6 @@ tag:
 	git push origin release/$(VERSION)
 	git checkout master
 
-
 run: image
 	docker run $(NAME):$(VERSION) /bin/true
 
