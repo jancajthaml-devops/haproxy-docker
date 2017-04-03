@@ -29,7 +29,6 @@ RUN         curl -sSL https://github.com/just-containers/s6-overlay/releases/dow
             adduser -D -g "" -s /bin/sh -G go-dnsmasq go-dnsmasq && \
             setcap CAP_NET_BIND_SERVICE=+eip /bin/go-dnsmasq
 
-
 RUN         set -x && \
             curl -SL "http://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz" -o haproxy.tar.gz && \
             tar -xzf haproxy.tar.gz -C /tmp && \
