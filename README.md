@@ -7,7 +7,9 @@ Build from source of [HA-Proxy](http://www.haproxy.org/download) running on top 
 ## Usage
 
 ```
-docker run --rm -it --log-driver none jancajthaml/haproxy:latest haproxy \
-       -f /etc/haproxy/haproxy.conf \
-       -v ./ha-proxy.conf:/etc/haproxy/haproxy.conf
+docker run --rm -it --log-driver none \
+       -p 8080:8080 \
+       -p 7000:7000 \
+       -v $$(pwd)/example/haproxy.conf:/etc/haproxy/haproxy.conf \
+       jancajthaml/haproxy:latest haproxy -f /etc/haproxy/haproxy.conf
 ```

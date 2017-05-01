@@ -22,8 +22,12 @@ tag: image
 	git push origin release/$(VERSION)
 	git checkout -B master
 
-run:
-	docker run --rm -it --log-driver none $(NAME):$(VERSION) haproxy -f /etc/haproxy/haproxy.conf
+run: image
+	docker run --rm -it --log-driver none \
+		-p 8080:8080 \
+		-p 7000:7000 \
+		-v $$(pwd)/example/haproxy.conf:/etc/haproxy/haproxy.conf \
+		$(NAME):$(VERSION) haproxy -f /etc/haproxy/haproxy.conf
 
 upload:
 	docker login -u jancajthaml https://index.docker.io/v1/
